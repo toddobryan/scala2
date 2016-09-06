@@ -26,13 +26,13 @@ object ListOps {
   }
 
   // Finds the length of the list. Try with both foldRight and foldLeft.
-  def length[X](list: List[X]): Int = ???
+  def length[X](list: List[X]): Int = foldLeft(list, 0)((z, h) => 1 + z)
 
-  // A simple append for two lists
   // Reverses the list. Try with both foldRight and foldLeft. You might need :+,
   // which adds one element to the end of a list.
-  def reverse[X](list: List[X]): List[X] = ???
+  def reverse[X](list: List[X]): List[X] = foldLeft(list, List[X]())((ft, h) => h :: ft)
 
+  // A simple append for two lists
   def simpleAppend[X](l1: List[X], l2: List[X]): List[X] = l1 match {
     case Nil => l2
     case head :: tail => head :: simpleAppend(tail, l2)
